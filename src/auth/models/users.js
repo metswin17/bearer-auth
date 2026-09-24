@@ -10,7 +10,14 @@ const userSchema = (sequelize, DataTypes) => {
     token: {
       type: DataTypes.VIRTUAL,
       get() {
-        return jwt.sign({ username: this.username }, process.env.SECRET);
+        return jwt.sign(
+          { username: this.username },
+          process.env.SECRET,
+          {
+            expiresIn: process.env.TOKEN_EXPIRES_IN || '15m',
+            algorithm: process.env.TOKEN_ALGORITHM || 'HS256'
+          }
+        );
       }
     }
   });
@@ -33,7 +40,13 @@ const userSchema = (sequelize, DataTypes) => {
   // Bearer AUTH: Validating a token
   model.authenticateToken = async function (token) {
     try {
-      const parsedToken = jwt.verify(token, process.env.SECRET);
+      const parsedToken = jwt.verify(
+        token,
+        process.env.SECRET,
+        {
+          algorithms: [process.env.TOKEN_ALGORITHM || 'HS256']
+        }
+      );
       const user = await this.findOne({
         where: { username: parsedToken.username }
       });
