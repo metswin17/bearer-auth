@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * Configures and initializes the Sequelize database connection.
+ * Selects database settings based on the current environment and
+ * exports the database connection and User model.
+ *
+ * @module models
+ */
+
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
 const userSchema = require('./users.js');
