@@ -105,8 +105,8 @@ The following diagram shows the authentication and Bearer token flow.
 
 ## Deployment
 
-Deployment URL: To be added after deployment.
+Deployment URL: https://bearer-auth-9175.onrender.com
 
 ## Pull Request
 
-Merged pull request: To be added after the dev branch is merged into main.
+Merged pull request: https://github.com/metswin17/bearer-auth/pull/1
