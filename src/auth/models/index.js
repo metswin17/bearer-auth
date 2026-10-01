@@ -23,11 +23,13 @@ switch (environment) {
     DATABASE_URL = 'sqlite::memory'
     break;
   case 'production':
-    db_config.dialectOptions = {
-      ssl: true,
-      rejectUnauthorized: false,
-    }
-    break;
+      db_config.dialectOptions = {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      };
+      break;
   case 'development':
     db_config.logging = true;
     break;
