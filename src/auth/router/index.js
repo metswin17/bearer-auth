@@ -12,6 +12,16 @@ const {
   handleSecret
 } = require('./handlers.js');
 
+/**
+ * Authentication router.
+ *
+ * Defines the signup, signin, users, and secret routes.
+ * Applies Basic Authentication to signin and Bearer Authentication
+ * to protected routes.
+ *
+ * @module authRouter
+ */
+
 authRouter.post('/signup', handleSignup);
 authRouter.post('/signin', basicAuth, handleSignin);
 authRouter.get('/users', bearerAuth, handleGetUsers);

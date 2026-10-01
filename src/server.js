@@ -29,6 +29,13 @@ app.use(errorHandler);
 
 module.exports = {
   server: app,
+
+  /**
+   * Starts the Express server on the specified port.
+   *
+   * @param {number|string} port - Port on which the server will listen.
+   * @returns {void}
+   */
   startup: (port) => {
     app.listen(port, () => {
       console.log(`Server Up on ${port}`);
